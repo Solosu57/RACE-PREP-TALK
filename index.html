@@ -99,6 +99,16 @@ input::placeholder{color:#555}
 .err{color:#ff7a59;font-size:13px;margin-top:6px;display:none}
 .field.invalid .err{display:block}
 .field.invalid input[type=text],.field.invalid input[type=email]{border-color:#ff7a59}
+.cls{display:grid;grid-template-columns:44px 1fr 1fr;gap:6px 8px;align-items:center;padding-top:6px}
+.cls-day{font-family:var(--num);font-weight:800;color:var(--y);font-size:14px;grid-column:1}
+.cls input{position:absolute;opacity:0;pointer-events:none}
+.cls label{display:flex;align-items:center;justify-content:center;text-align:center;min-height:44px;padding:6px 8px;border:1px solid #333;border-radius:10px;font-size:14px;cursor:pointer;background:#0A0A0A;transition:all .15s;line-height:1.3}
+.cls label:hover{border-color:#555}
+.cls input:checked+label{background:var(--y);color:#0A0A0A;border-color:var(--y);font-weight:900}
+.cls input:focus-visible+label{box-shadow:0 0 0 3px var(--y-dim)}
+#classBox:not(.open){margin-bottom:0}
+.fee .lines{display:grid;gap:2px}
+.fee .lines small{color:var(--mute);font-size:12px;white-space:pre-line;line-height:1.5}
 .fee{display:flex;justify-content:space-between;align-items:center;background:var(--y-dim);border:1px dashed rgba(255,212,0,.35);border-radius:10px;padding:12px 16px;margin:6px 0 18px;font-size:14px}
 .fee b{font-family:var(--num);font-size:24px;color:var(--y);font-weight:800}
 .done{text-align:center;padding:30px 0 10px;display:none}
@@ -323,6 +333,29 @@ footer{border-top:1px solid var(--line);padding:64px 0 40px;background:#070707}
           <div class="err">請選擇一項</div>
         </div>
 
+        <div class="field collapse" id="classBox" data-f="nidClass"><div>
+          <span class="lbl">你目前參加的班別<span class="req">*</span></span>
+          <div class="cls">
+              <div class="cls-day">週一</div>
+              <input type="radio" id="k1" name="nidClass" value="週一三民跑班"><label for="k1">三民跑班</label>
+              <input type="radio" id="k2" name="nidClass" value="週一三民HYROX訓練班"><label for="k2">三民 HYROX 訓練班</label>
+              <div class="cls-day">週二</div>
+              <input type="radio" id="k3" name="nidClass" value="週二苓雅初階跑班"><label for="k3">苓雅初階跑班</label>
+              <input type="radio" id="k4" name="nidClass" value="週二高大初階跑班"><label for="k4">高大初階跑班</label>
+              <div class="cls-day">週三</div>
+              <input type="radio" id="k5" name="nidClass" value="週三苓雅跑班"><label for="k5">苓雅跑班</label>
+              <input type="radio" id="k6" name="nidClass" value="週三高大跑班"><label for="k6">高大跑班</label>
+              <div class="cls-day">週四</div>
+              <input type="radio" id="k7" name="nidClass" value="週四苓雅跑班"><label for="k7">苓雅跑班</label>
+              <input type="radio" id="k8" name="nidClass" value="週四高大初階跑班"><label for="k8">高大初階跑班</label>
+              <div class="cls-day">週五</div>
+              <input type="radio" id="k9" name="nidClass" value="週五三民初階跑班"><label for="k9">三民初階跑班</label>
+              <div class="cls-day">週六</div>
+              <input type="radio" id="k10" name="nidClass" value="週六苓雅早跑班"><label for="k10">苓雅早跑班</label>
+          </div>
+          <div class="err">請選擇你的班別</div>
+        </div></div>
+
         <div class="field" data-f="bringFriends">
           <span class="lbl">會帶朋友一起來嗎？<span class="req">*</span></span>
           <div class="seg">
@@ -352,7 +385,7 @@ footer{border-top:1px solid var(--line);padding:64px 0 40px;background:#070707}
           </div></div>
         </div>
 
-        <div class="fee" id="fee"><span id="feeLabel">選擇身分後顯示費用</span><b id="feeVal">—</b></div>
+        <div class="fee" id="fee"><span class="lines"><span id="feeLabel">選擇身分後顯示費用</span><small id="feeSub"></small></span><b id="feeVal">—</b></div>
 
         <button class="btn block" type="submit" id="submitBtn">立即報名
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
@@ -537,10 +570,10 @@ footer{border-top:1px solid var(--line);padding:64px 0 40px;background:#070707}
       <div class="pc hl reveal d1">
         <div class="who-t">NID 學生</div>
         <div class="price">FREE</div>
-        <p>免費參加，並可攜帶朋友同行</p>
+        <p>本人免費，攜伴朋友每位 NT$100</p>
         <ul>
           <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>完整備賽分享</li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>可攜伴一起參加</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>可攜伴，朋友當天繳 NT$100／位</li>
           <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>現場 Q&amp;A 交流</li>
         </ul>
         <img class="bg-n" src="data:image/png;base64,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" alt="">
@@ -643,17 +676,25 @@ document.querySelectorAll('.ag').forEach(el => agIO.observe(el));
 /* ---------- form ---------- */
 const form = document.getElementById('regForm');
 const friendBox = document.getElementById('friendBox'), otherBox = document.getElementById('otherBox');
-const count = document.getElementById('f-count');
+const count = document.getElementById('f-count'), classBox = document.getElementById('classBox');
 const val = n => (form.querySelector(`[name="${n}"]:checked`) || {}).value || '';
 
+const PRICE = 100;
+function friendsN(){ return val('bringFriends') === '有' ? Math.min(10, Math.max(1, parseInt(count.value) || 1)) : 0; }
+function calcFee(){ const s = val('nidStudent'); return s ? (s === '是' ? 0 : PRICE) + friendsN() * PRICE : null; }
 function updateFee(){
-  const s = val('nidStudent'), lbl = document.getElementById('feeLabel'), v = document.getElementById('feeVal');
-  if (s === '是') { lbl.textContent = 'NID 學生'; v.textContent = '免費'; }
-  else if (s === '否') { lbl.textContent = '報名費・當天現場繳交'; v.textContent = 'NT$100'; }
-  else { lbl.textContent = '選擇身分後顯示費用'; v.textContent = '—'; }
+  const s = val('nidStudent'), lbl = document.getElementById('feeLabel'), sub = document.getElementById('feeSub'), v = document.getElementById('feeVal');
+  if (!s) { lbl.textContent = '選擇身分後顯示費用'; sub.textContent = ''; v.textContent = '—'; return; }
+  const n = friendsN(), parts = [s === '是' ? '本人（NID 學生）免費' : '本人 NT$' + PRICE];
+  if (n) parts.push('朋友 ' + n + ' 位 × NT$' + PRICE);
+  const fee = calcFee();
+  lbl.textContent = fee ? '報名費合計・當天現場繳交' : '報名費';
+  sub.textContent = parts.join('\n+ ');
+  v.textContent = fee ? 'NT$' + fee : '免費';
 }
 form.addEventListener('change', e => {
   friendBox.classList.toggle('open', val('bringFriends') === '有');
+  classBox.classList.toggle('open', val('nidStudent') === '是');
   otherBox.classList.toggle('open', val('source') === '其他');
   updateFee();
   const f = e.target.closest('.field'); if (f) f.classList.remove('invalid');
@@ -661,7 +702,9 @@ form.addEventListener('change', e => {
 form.addEventListener('input', e => { const f = e.target.closest('.field'); if (f) f.classList.remove('invalid'); });
 form.querySelectorAll('[data-step]').forEach(b => b.addEventListener('click', () => {
   count.value = Math.min(10, Math.max(1, (parseInt(count.value) || 1) + +b.dataset.step));
+  updateFee();
 }));
+count.addEventListener('input', updateFee);
 
 function validate(){
   let ok = true;
@@ -669,6 +712,7 @@ function validate(){
   set('name', !form.name.value.trim());
   set('email', !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email.value.trim()));
   set('nidStudent', !val('nidStudent'));
+  set('nidClass', val('nidStudent') === '是' && !val('nidClass'));
   set('bringFriends', !val('bringFriends'));
   return ok;
 }
@@ -683,14 +727,25 @@ form.addEventListener('submit', async e => {
     name: form.name.value.trim(),
     email: form.email.value.trim(),
     nidStudent: val('nidStudent'),
+    nidClass: val('nidStudent') === '是' ? val('nidClass') : '',
     bringFriends: bring,
-    friendCount: bring === '有' ? String(parseInt(count.value) || 1) : '0',
+    friendCount: String(friendsN()),
+    fee: String(calcFee()),
     source: val('source') === '其他' ? ('其他：' + (form.sourceOther.value.trim() || '未說明')) : (val('source') || '未填'),
     userAgent: navigator.userAgent
   };
   try {
     if (CONFIG.scriptUrl) {
-      await fetch(CONFIG.scriptUrl, { method:'POST', mode:'no-cors', body:new URLSearchParams(data) });
+      let res;
+      try {
+        res = await fetch(CONFIG.scriptUrl, { method:'POST', body:new URLSearchParams(data), redirect:'follow' });
+      } catch (netErr) {
+        throw new Error('無法連到報名系統（請確認 Apps Script 部署的「誰可以存取」是「所有人」）');
+      }
+      let json = null;
+      try { json = await res.json(); } catch (_) {}
+      if (!json) throw new Error('報名系統回應異常（' + res.status + '），請確認 Apps Script 已用最新版本重新部署');
+      if (!json.ok) throw new Error('寫入試算表失敗：' + (json.error || '未知錯誤'));
     } else {
       console.warn('[NID] 尚未設定 CONFIG.scriptUrl，此次為預覽模式，資料未送出：', data);
       await new Promise(r => setTimeout(r, 600));
@@ -699,7 +754,8 @@ form.addEventListener('submit', async e => {
     reg.classList.add('sent'); onScroll();
     reg.scrollIntoView({behavior:'smooth', block:'center'});
   } catch (err) {
-    msg.textContent = '送出失敗，請檢查網路後再試一次，或直接私訊 IG @nidrunclub';
+    console.error('[NID] 送出失敗', err);
+    msg.textContent = (err && err.message ? err.message + '。' : '') + '若持續失敗，請直接私訊 IG @nidrunclub';
   } finally {
     btn.disabled = false; btn.firstChild.textContent = '立即報名 ';
   }
